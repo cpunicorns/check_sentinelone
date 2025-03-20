@@ -144,14 +144,16 @@ func (c *Config) Run() (rc int, output string, err error) {
 	// Add summary on top.
 	sb.WriteString(fmt.Sprintf("%d threats found, %d not mitigated\n", total, notMitigated) + sb.String())
 
-	if c.SiteName != "" && c.ComputerName == "" {
-		sb.WriteString(fmt.Sprintf("site %s - ", c.SiteName) + sb.String())
+	if c.SiteName != "" && c.Cluster != "" {
+		sb.WriteString(fmt.Sprintf("cluster %s - ", c.Cluster) + sb.String())
 	} else if c.ComputerName != "" {
 		sb.WriteString(fmt.Sprintf("Computer %s - ", c.ComputerName) + sb.String())
 	} else if c.GroupID != "" {
 		sb.WriteString(fmt.Sprintf("Group %s - ", c.GroupID) + sb.String())
 	} else if c.Cluster != "" {
 		sb.WriteString(fmt.Sprintf("Cluster %s - ", c.Cluster) + sb.String())
+	} else if c.SiteName != "" {
+		sb.WriteString(fmt.Sprintf("site %s - ", c.SiteName) + sb.String())
 	}
 
 	// Add perfdata.

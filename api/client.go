@@ -9,7 +9,7 @@ import (
 	"golang.org/x/oauth2/clientcredentials"
 )
 
-const DefaultTimeout = 5
+const DefaultTimeout = 10
 
 type Client struct {
 	AuthConfig    *clientcredentials.Config
